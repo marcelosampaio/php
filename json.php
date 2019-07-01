@@ -18,7 +18,7 @@ header('Content-type: application/json');
             while($row = mysqli_fetch_array($result)){
                 
                 $response[$index] = array(
-                                     'objectId' => $row[0],
+                                     'id' => $row[0],
                                      'description'=> $row[1]
                                      );
                 $index = $index + 1;
