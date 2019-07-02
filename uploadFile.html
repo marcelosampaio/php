@@ -1,0 +1,22 @@
+<form action="" method="post" enctype="multipart/form-data">
+  <table border="1px">
+    <tr><td><input type="file" name="image" ></td></tr>
+    <tr><td> <input type="submit" value="upload" name="btn"></td></tr>
+  </table>
+</form>
+
+ <?php
+   if(isset($_POST['btn'])){
+     $image=$_FILES['image']['name']; 
+     $imageArr=explode('.',$image); //first index is file name and second index file type
+     $rand=rand(10000,99999);
+     $newImageName=$imageArr[0].$rand.'.'.$imageArr[1];
+     $uploadPath="uploads/".$newImageName;
+     $isUploaded=move_uploaded_file($_FILES["image"]["tmp_name"],$uploadPath);
+     if($isUploaded)
+       echo 'successfully file uploaded';
+     else
+       echo 'something went wrong'; 
+   }
+
+ ?>
